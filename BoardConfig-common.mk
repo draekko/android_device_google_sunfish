@@ -241,6 +241,12 @@ BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/sunfish-kernel/*.ko)
 endif
 
+# Kernel
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/kernel
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(DEVICE_PATH)/dtb
+
 # dynamic partition
 BOARD_SUPER_PARTITION_SIZE := 9755951104
 BOARD_SUPER_PARTITION_GROUPS := google_dynamic_partitions
